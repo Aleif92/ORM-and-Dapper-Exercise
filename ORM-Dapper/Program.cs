@@ -17,18 +17,29 @@ namespace ORM_Dapper
 
             IDbConnection conn = new MySqlConnection(connString);
 
-            var departmentRopos = new DapperDepartmentRepository(conn);
-            
-            departmentRopos.InsertDepartments("Alex's new department");
+            // var departmentRepos = new DapperDepartmentRepository(conn);
+            //
+            //
+            //
+            // var departments = departmentRopos.GetAllDepartments();
+            //
+            // foreach (var department in departments)
+            // {
+            //     Console.WriteLine(department.DepartmentID);
+            //     Console.WriteLine(department.Name);
+            //     Console.WriteLine();
+            //
+            //     
+            // }
+            var repo = new DapperProductRepository(conn);
+           // repo.CreateProduct("Test Product", 20.00,1);
+           var products = repo.GetAllProducts();
 
-            var departments = departmentRopos.GetAllDepartments();
-
-            foreach (var department in departments)
+            foreach (var prod in  products)
             {
-                Console.WriteLine(department.DepartmentID);
-                Console.WriteLine(department.Name);
-                Console.WriteLine();
+                Console.WriteLine($"{prod.ProductID} {prod.Name}");
             }
+
         }
     }
 }
